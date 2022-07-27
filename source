@@ -7586,6 +7586,14 @@ addcmd('esp',{},function(args, speaker)
 	end
 end)
 
+while ESPenabled and wait(3) do
+    for i,v in pairs(Players:GetChildren()) do
+        if v.ClassName == "Player" and v.Name ~= speaker.Name then
+            ESP(v)
+        end
+    end
+end
+
 addcmd('noesp',{'unesp'},function(args, speaker)
 	ESPenabled = false
 	for i,c in pairs(COREGUI:GetChildren()) do
