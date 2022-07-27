@@ -5405,6 +5405,12 @@ function ESP(plr)
 			ESPholder.Name = plr.Name..'_ESP'
 			ESPholder.Parent = COREGUI
 			repeat wait(1) until plr.Character and getRoot(plr.Character) and plr.Character:FindFirstChildOfClass("Humanoid")
+            local toColor
+            if plr.StarterGear:FindFirstChild("Crow") then
+                toColor = Color3.fromRGB(0, 0, 255)
+            elseif plr.StarterGear:FindFirstChild("Muzan Quests") then
+                toColor = Color3.fromRGB(255, 0, 0)
+            end
 			for b,n in pairs (plr.Character:GetChildren()) do
 				if (n:IsA("BasePart")) then
 					local a = Instance.new("BoxHandleAdornment")
@@ -5415,7 +5421,11 @@ function ESP(plr)
 					a.ZIndex = 10
 					a.Size = n.Size
 					a.Transparency = 0.3
-					a.Color = plr.TeamColor
+                    if toColor then
+					    a.Color3 = toColor
+                    else
+                        a.Color = plr.TeamColor
+                    end
 				end
 			end
 			if plr.Character and plr.Character:FindFirstChild('Head') then
